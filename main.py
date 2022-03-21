@@ -6,14 +6,6 @@
 ## a
 ##
 
-#!/usr/bin/env python3
-##
-## EPITECH PROJECT, 2021
-## s
-## File description:
-## s
-##
-
 import pygame
 from random import randint
 import sys
@@ -49,7 +41,6 @@ from pygame.locals import (
 
 SCREEN_WIDTH = 1920
 SCREEN_HEIGHT = 1280
-
 
 def menu_loop():
     system("clear")
@@ -127,6 +118,7 @@ def game_loop():
     clock = pygame.time.Clock()
     running = True
     color = (217,225,229)
+    wait = 0
     name = []
     l = []
     d = 430
@@ -163,7 +155,6 @@ def game_loop():
                 if event.key == K_ESCAPE:
                     game_loop()
             my_guess = list_to_str(name)
-            #print(my_guess,all_collor[rdm_num_two])
             if my_guess == all_collor[rdm_num_two] and time > 0:
                 score = score + 1
                 name = []
@@ -179,8 +170,11 @@ def game_loop():
                     rdm_num_two = randint(0,len(all_collor) - 1)
                 name = []
             for i in range(26):
-                if pressed_keys[ord(l[i])]:
+                if pressed_keys[ord(l[i])] and wait < 0:
                     name.append(l[i])
+                    wait = 1
+        wait = wait - 1
+        print(wait)
         screen.fill(color)
         if time > 0:
             GAME_FONT2.render_to(screen, (825 - (len(all_collor[rdm_num_one]) * 25), 30), all_collor[rdm_num_one], color_list[rdm_num_two])
