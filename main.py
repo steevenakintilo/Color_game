@@ -160,7 +160,7 @@ def game_loop():
                 name = []
             if pressed_keys[ord('x')]:
                 quit()
-            if pressed_keys[ord(' ')] and time <= 0 and idx > 120:
+            if pressed_keys[ord(' ')] and time <= 0 and idx > 300:
                 game_loop()
             if pressed_keys[ord(' ')] and time > 0:
                 rdm_num_one = randint(0,len(all_collor) - 1)
@@ -172,7 +172,7 @@ def game_loop():
             for i in range(26):
                 if pressed_keys[ord(l[i])] and wait < 0:
                     name.append(l[i])
-                    wait = 1
+                    wait = 1.5
         wait = wait - 1
         print(wait)
         screen.fill(color)
